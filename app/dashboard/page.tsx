@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { KanbanBoard } from '@/components/board/KanbanBoard'
 import { Task } from '@/lib/types'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
