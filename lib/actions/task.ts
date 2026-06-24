@@ -13,7 +13,7 @@ export async function createTask(formData: FormData) {
 
   const supabase = await createClient()
 
-  const { error } = await supabase
+  const { data: task, error } = await supabase
     .from('tasks')
     .insert({
       team_id: teamId,
@@ -23,12 +23,14 @@ export async function createTask(formData: FormData) {
       status,
       assigned_to: assignedTo || null,
     })
+    .select()
+    .single()
 
   if (error) {
     return { error: error.message }
   }
 
-  return { success: true }
+  return { success: true, task }
 }
 
 export async function updateTaskStatus(taskId: string, status: TaskStatus) {

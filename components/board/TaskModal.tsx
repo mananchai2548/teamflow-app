@@ -158,7 +158,7 @@ export function TaskModal({
       await updateTaskTags(taskToEdit.id, tags)
     } else {
       result = await createTask(formData)
-      if (result.success && result.task) {
+      if ('task' in result && result.task) {
         if (tags.length > 0) await updateTaskTags(result.task.id, tags)
       }
     }

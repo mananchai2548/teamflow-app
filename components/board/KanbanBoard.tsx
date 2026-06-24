@@ -44,7 +44,7 @@ export function KanbanBoard({ initialTasks, teamId, members, currentUser }: { in
             setTasks((prev) => {
               if (prev.find(t => t.id === payload.new.id)) return prev;
               // Provide empty relation arrays so UI doesn't crash before refresh
-              return [{ ...payload.new, subtasks: [], task_comments: [], tags: payload.new.tags || [] } as Task, ...prev];
+              return [{ ...payload.new, subtasks: [], task_comments: [], tags: payload.new.tags || [] } as unknown as Task, ...prev];
             })
           } else if (payload.eventType === 'UPDATE') {
             setTasks((prev) => prev.map((t) => (t.id === payload.new.id ? { ...t, ...payload.new } : t)))
