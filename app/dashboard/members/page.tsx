@@ -30,7 +30,7 @@ export default async function MembersPage() {
     redirect('/onboarding')
   }
 
-  const currentUserRole = teamMembers?.role || 'member'
+  const currentUserRole = currentTeamMember?.role || 'member'
 
   const { data: members } = await supabase
     .from('team_members')
