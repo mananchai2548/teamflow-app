@@ -30,7 +30,7 @@ export default async function SettingsPage() {
     redirect('/onboarding')
   }
 
-  const isOwner = teamMembers?.role === 'owner'
+  const isOwner = currentTeamMember?.role === 'owner'
 
   return (
     <div className="max-w-3xl mx-auto w-full">
